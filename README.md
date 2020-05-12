@@ -1,5 +1,13 @@
 # YCA_VG_AlexeyAB_darknet
-This a repo forked from VG_AlexeyAB_darknet(https://github.com/vincentgong7/VG_AlexeyAB_darknet) which is forked from AlexeyAB_darknet(https://github.com/AlexeyAB/darknet) with more features on YOLO batch/test detector
+
+This a repo forked from VG_AlexeyAB_darknet(https://github.com/vincentgong7/VG_AlexeyAB_darknet) which is forked from AlexeyAB_darknet(https://github.com/AlexeyAB/darknet) with more features on YOLO batch/test detector. You can download and build the solution after arranging relational paths in Visual Studio or do the equivalent steps if you will use another system.
+
+Linker -> General -> Additional Library Dependencies 
+Linker -> Input -> Additional Dependincies
+C/C++ -> General -> Additional Include Directories
+
+Dont forget to copy pthreadGC2.dll and pthreadVC2.dll files in the same directory with darknet_no_gpu.exe after building process is done.
+I use VS2019 and opencv_3.0 for this code. You can download opencv version from  https://opencv.org/opencv-3-0/
 
 # Added features
 
@@ -27,7 +35,7 @@ darknet_no_gpu.exe detector batch data/COCO/obj.data cfg/yolov3_coco.cfg weights
 
 When typing multi threshold values, make sure to give the values in decreasing order.
 You can use the command without -out or -out_folder if you dont want to obtain these outputs.
-If you dont want to use multi threshold feauture but to determine one threshold value use -thres xx command.
+If you dont want to use multi threshold feauture but to determine one threshold value use -thresh xx command.
 
 
 
