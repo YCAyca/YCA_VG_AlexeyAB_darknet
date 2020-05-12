@@ -6,8 +6,9 @@ Linker -> General -> Additional Library Dependencies <br>
 Linker -> Input -> Additional Dependincies <br>
 C/C++ -> General -> Additional Include Directories <br>
 
-Dont forget to copy pthreadGC2.dll and pthreadVC2.dll files in the same directory with darknet_no_gpu.exe after building process is done. <br>
 I use VS2019 and opencv_3.0 for this code. You can download opencv version from  https://opencv.org/opencv-3-0/ <br>
+
+This repo contains only the solution and dataset I already used and tested. So If you want to use another solution (like with Gpu ones etc), you can easily take it from the base repo I mentioned above.   
 
 # Added features
 
@@ -36,6 +37,12 @@ darknet_no_gpu.exe detector batch data/COCO/obj.data cfg/yolov3_coco.cfg weights
 When typing multi threshold values, make sure to give the values in decreasing order. <br>
 You can use the command without -out or -out_folder if you dont want to obtain these outputs. <br>
 If you dont want to use multi threshold feauture but to determine one threshold value use -thresh xx command. <br>
+
+# Command descriptions of other features from base repos
+
+Use "detection test" for single image detection
+Use "detection batch" for multiple image detection. For that you should use "-in_folder imagepath" too.
+Use "-save_labels" for saving labels as yolo annotation files
 
 
 
