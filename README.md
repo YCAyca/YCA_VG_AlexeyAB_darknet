@@ -9,13 +9,11 @@ With this feature, you can make predictions with multiple prediction thresholds 
 
 When you use multi threshold feauture, you obtain different result.txt files and output image folders for each threshold value. You need to give the base folder and file name during running the code via terminal. Not all the folder and file names separately. (e.g When you type out_folder data/COCO/out_images/ the app creates different output image folders via the given threshold values like data/COCO/out_images.25/ data/COCO/out_images.90/ when the given threshold values are 0.25 and 0.90. Likewise when you type -out results/result.txt the app creates different output files via the given threshold values like results/result.25 results/result.90 when the given threshold values are 0.25 and 0.90)
 
-<img src="build/darknet/x64/data/COCO/out_images.25/000000000001.png" alt="" width="50%" />
-<img src="build/darknet/x64/data/COCO/out_images.90/000000000001.png" alt="" width="50%" />
+<img src="build/darknet/x64/data/COCO/out_images.25/000000000001.png" alt="" width="40%" /> <img src="build/darknet/x64/data/COCO/out_images.90/000000000001.png" alt="" width="40%" />
 
 Figure : Different results of prediction with threshold values 0.25 & 0.90
 
-<img src="build/darknet/x64/data/COCO/out_images.25/000000000016.png" alt="" width="50%" />
-<img src="build/darknet/x64/data/COCO/out_images.90/000000000016.png" alt="" width="50%" />
+<img src="build/darknet/x64/data/COCO/out_images.25/000000000016.png" alt="" width="40%" /> <img src="build/darknet/x64/data/COCO/out_images.90/000000000016.png" alt="" width="40%" />
 
 Figure : Different results of prediction with threshold values 0.25 & 0.90
 
