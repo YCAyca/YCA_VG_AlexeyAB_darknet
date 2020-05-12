@@ -1,0 +1,4 @@
+classes= 80
+names = data/COCO/obj.names
+backup = backup/
+
