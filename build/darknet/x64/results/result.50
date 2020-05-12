@@ -1,0 +1,67 @@
+data/COCO/in_images/000000000001.jpg 
+car: 100% (left_x:  -11  top_y:  122  width:  480  height:  179)
+car: 81% (left_x:  181  top_y:  108  width:   98  height:   36)
+truck: 100% (left_x:  254  top_y:   24  width:  397  height:  200)
+parking meter: 96% (left_x:  261  top_y:  160  width:   34  height:   68)
+
+data/COCO/in_images/000000000016.jpg 
+person: 91% (left_x:   -0  top_y:  129  width:   51  height:  409)
+baseball bat: 98% (left_x:   34  top_y:  250  width:  241  height:   75)
+person: 100% (left_x:  163  top_y:  103  width:  304  height:  532)
+sports ball: 86% (left_x:  237  top_y:   92  width:   26  height:   32)
+
+data/COCO/in_images/000000000019.jpg 
+cow: 88% (left_x:   89  top_y:  135  width:  484  height:  243)
+
+data/COCO/in_images/000000000057.jpg 
+sports ball: 96% (left_x:  136  top_y:  189  width:   21  height:   18)
+person: 100% (left_x:  375  top_y:   29  width:  144  height:  371)
+tennis racket: 99% (left_x:  499  top_y:  161  width:   74  height:   54)
+
+data/COCO/in_images/000000000063.jpg 
+person: 100% (left_x:   68  top_y:  102  width:  209  height:  268)
+person: 100% (left_x:  301  top_y:  109  width:   95  height:  219)
+sports ball: 82% (left_x:  533  top_y:   71  width:   20  height:   13)
+
+data/COCO/in_images/000000000069.jpg 
+person: 98% (left_x:   -8  top_y:  103  width:  254  height:  310)
+wine glass: 100% (left_x:  148  top_y:  240  width:   43  height:   97)
+person: 100% (left_x:  156  top_y:   36  width:  202  height:  226)
+wine glass: 97% (left_x:  271  top_y:  198  width:   37  height:   83)
+bottle: 66% (left_x:  285  top_y:    6  width:   11  height:   47)
+wine glass: 99% (left_x:  336  top_y:  175  width:   29  height:   67)
+person: 100% (left_x:  377  top_y:   68  width:  210  height:  357)
+tvmonitor: 52% (left_x:  396  top_y:   68  width:   30  height:   40)
+bottle: 50% (left_x:  407  top_y:   29  width:   12  height:   33)
+
+data/COCO/in_images/000000000080.jpg 
+zebra: 71% (left_x:   -1  top_y:   66  width:   44  height:  310)
+zebra: 100% (left_x:  321  top_y:   77  width:  134  height:  253)
+
+data/COCO/in_images/000000000090.jpg 
+cow: 93% (left_x:  232  top_y:  353  width:   73  height:   63)
+
+data/COCO/in_images/000000000106.jpg 
+bird: 73% (left_x:  248  top_y:  110  width:  236  height:  256)
+
+data/COCO/in_images/000000000108.jpg 
+train: 100% (left_x:  208  top_y:  154  width:  227  height:  221)
+
+data/COCO/in_images/000000000128.jpg 
+elephant: 76% (left_x:  121  top_y:   24  width:  232  height:  479)
+
+data/COCO/in_images/000000000155.jpg 
+teddy bear: 99% (left_x:   54  top_y:   14  width:  552  height:  402)
+
+data/COCO/in_images/000000000161.jpg 
+carrot: 63% (left_x:  338  top_y:   42  width:   37  height:  128)
+spoon: 64% (left_x:  460  top_y:  300  width:  186  height:  114)
+broccoli: 52% (left_x:  484  top_y:  266  width:  100  height:   70)
+
+data/COCO/in_images/000000000171.jpg 
+person: 100% (left_x:  -11  top_y:   48  width:  372  height:  326)
+tie: 100% (left_x:  138  top_y:  251  width:   40  height:  128)
+
+data/COCO/in_images/000000000178.jpg 
+motorbike: 86% (left_x:  248  top_y:  136  width:  153  height:  153)
+motorbike: 100% (left_x:  292  top_y:  136  width:  344  height:  288)
