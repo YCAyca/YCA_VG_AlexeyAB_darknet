@@ -27,7 +27,7 @@ darknet_no_gpu.exe detector batch data/COCO/obj.data cfg/yolov3_coco.cfg weights
 
 When typing multi threshold values, make sure to give the values in decreasing order.
 You can use the command without -out or -out_folder if you dont want to obtain these outputs.
-If you dont want to use multi threshold feauture but to determine one threshold value use -thres xx command
+If you dont want to use multi threshold feauture but to determine one threshold value use -thres xx command.
 
 
 
