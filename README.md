@@ -19,18 +19,15 @@ Figure : Different results of prediction with threshold values 0.25 & 0.90
 
 In summary, we can say that more detailed objects are detected with the 0.25 threshold. As for 0.90 threshold, the accuracy rate will be higher since the prediction will only detect objects having high probability. You can use the multi-threshold feature for making comparisons with different values and to choose best prediction threshold for your model.
 
-# * Usage
+# Usage
 
 darknet_no_gpu.exe detector batch data/COCO/obj.data cfg/yolov3_coco.cfg weights/yolov3_coco.weights -in_folder data/COCO/in_images/ -out_folder data/COCO/out_images/ -out results/result.txt -multi_thresh 3 0.90 0.50 0.25  
 
-# !Important Notes!
+# Important Notes
 
 When typing multi threshold values, make sure to give the values in decreasing order.
 You can use the command without -out or -out_folder if you dont want to obtain these outputs.
 If you dont want to use multi threshold feauture but to determine one threshold value use -thres xx command
-
-
-
 
 
 
