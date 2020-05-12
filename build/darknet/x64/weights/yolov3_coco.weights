@@ -1,0 +1,2 @@
+download yolov4 predefined weights from  https://pjreddie.com/media/files/yolov3.weights
+and save the file in your  ...x64/weights/ directory
