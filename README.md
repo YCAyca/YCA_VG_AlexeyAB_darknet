@@ -16,6 +16,9 @@ To build darknet.sln look at Figure1 and to build darknet_no_gpu look at Figure2
 
 <img src="readme_imgs/darknet_no_gpu.png" alt="" width="100%" />  <b><i> Figure 2 </b></i>  <br> <br> <br>
 
+<b>! Dont forget to add .dll files next to the darknet.exe / darknet_no_gpu.exe file after build </b> <br><br>
+<img src="readme_imgs/dlls.png" alt="" width="40%" /> <br> <br> <br>
+
 I use VS2019 and opencv_3.2 for this code. You can download opencv version from  https://opencv.org/opencv-3-2/ <br>
 
 This repo contains only the solution and dataset I already used and tested. (darknet.sln for train and darknet_no_gpu.sln for test)
