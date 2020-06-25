@@ -29,7 +29,7 @@ To train your custom dataset, use one of these commands after replacing "SATA" f
 
 <i> darknet.exe  detector train data/SATA/obj.data cfg/yolov3_sata.cfg weights/pretrained/yolov3-tiny.conv.11 (to train with tiny yolov3 using pretrained weights) </i>
 
-To test your model with a single image use this command after replacing "SATA" folder, "obj.data" file, "image.png" file and sata.weights(use your weights trained with the training command!) <i>
+To test your model with a single image use this command after replacing "SATA" folder, "obj.data" file, "image.png" file and sata.weights(use your weights trained with the training command!)
 
 <i> darknet_no_gpu.exe detector test data/SATA/obj.data cfg/yolov3_sata.cfg weights/sata.weights -filename data/SATA/image.png </i>
 
