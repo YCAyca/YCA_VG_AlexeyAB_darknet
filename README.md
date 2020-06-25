@@ -8,7 +8,7 @@ C/C++ -> General -> Additional Include Directories <br>
 
 General placements and system environment definitions are shown below:
 
-<img src="readme_imgs/paths1.png" alt="" width="40%" /> <img src="readme_imgs/paths2.png" alt="" width="40%" />
+<img src="readme_imgs/paths1.png" alt="" width="30%" /> <br><br> <img src="readme_imgs/paths2.png" alt="" width="30%" />
 
 To build darknet.sln look at Figure1 and to build darknet_no_gpu look at Figure2
 
