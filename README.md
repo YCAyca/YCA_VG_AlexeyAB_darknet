@@ -40,7 +40,7 @@ To test your model with a batch of test image use this command after replacing "
 
 <i> darknet_no_gpu.exe detector batch data/SATA/obj.data cfg/yolov3-tiny_sata.cfg weights/yolov3-tiny_sata.weights -in_folder data/SATA/in_images/ -out_folder data/SATA/out_images/ -out results/result.txt </i>
 
-<img src="readme_imgs/sata_folder.png" alt="" width="40%" />  <b><i> Inside view of a sample sata folder. </b></i>  <br> <br> <br>
+<img src="readme_imgs/sata_folder.png" alt="" width="40%" />  <b><i> Inside view of a sample "SATA"(the folder contains your dataset, obj.data obj.name files and output folders) folder. </b></i>  <br> <br> <br>
 
 # Added features
 
