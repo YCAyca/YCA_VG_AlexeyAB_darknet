@@ -1,14 +1,25 @@
 # YCA_VG_AlexeyAB_darknet
 
-This a repo forked from VG_AlexeyAB_darknet(https://github.com/vincentgong7/VG_AlexeyAB_darknet) which is forked from AlexeyAB_darknet(https://github.com/AlexeyAB/darknet) with more features on YOLO batch/test detector. You can download and build the solution after arranging relational paths in Visual Studio or do the equivalent steps if you will use another system.
+This a repo forked from VG_AlexeyAB_darknet(https://github.com/vincentgong7/VG_AlexeyAB_darknet) which is forked from AlexeyAB_darknet(https://github.com/AlexeyAB/darknet) with more features on YOLO batch/test detector. You can download and build the solution after arranging below paths in Visual Studio or do the equivalent steps if you will use another system.
 
 Linker -> General -> Additional Library Dependencies <br>
 Linker -> Input -> Additional Dependincies <br>
 C/C++ -> General -> Additional Include Directories <br>
 
-I use VS2019 and opencv_3.0 for this code. You can download opencv version from  https://opencv.org/opencv-3-0/ <br>
+General placements and system environment definitions are shown below:
 
-This repo contains only the solution and dataset I already used and tested. So If you want to use another solution (like with Gpu ones etc), you can easily take it from the base repo I mentioned above.   
+<img src="readme_imgs/paths1.png" alt="" width="40%" /> <img src="readme_imgs/paths2.png" alt="" width="40%" />
+
+To build darknet.sln look at Figure1 and to build darknet_no_gpu look at Figure2
+
+<img src="readme_imgs/darknet.png" alt="" width="100%" /> Figure 1<br> <br> <br>
+
+<img src="readme_imgs/darknet_no_gpu.png" alt="" width="100%" />  Figure 2<br> <br> <br>
+
+I use VS2019 and opencv_3.2 for this code. You can download opencv version from  https://opencv.org/opencv-3-2/ <br>
+
+This repo contains only the solution and dataset I already used and tested. (darknet.sln for train and darknet_no_gpu.sln for test)
+So If you want to use another solution you can easily take it from the base repo I mentioned above.   
 
 # Added features
 
