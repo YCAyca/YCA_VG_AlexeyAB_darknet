@@ -19,7 +19,23 @@ To build darknet.sln look at Figure1 and to build darknet_no_gpu look at Figure2
 I use VS2019 and opencv_3.2 for this code. You can download opencv version from  https://opencv.org/opencv-3-2/ <br>
 
 This repo contains only the solution and dataset I already used and tested. (darknet.sln for train and darknet_no_gpu.sln for test)
-So If you want to use another solution you can easily take it from the base repo I mentioned above.   
+So If you want to use another solution you can easily take it from the base repo I mentioned above.  
+
+# General Usage
+
+To train your custom dataset, use one of these commands after replacing "SATA" folder, "obj.data" file, "yolov3_sata.cfg" file with your custom dataset and files and add pretrained weights(https://pjreddie.com/media/files/darknet53.conv.74   https://drive.google.com/file/d/18v36esoXCh-PsOKwyP2GWrpYDptDY8Zf/view?usp=sharing) to the related folder. 
+
+<i> darknet.exe  detector train data/SATA/obj.data cfg/yolov3_sata.cfg weights/pretrained/darknet53.conv.74 (to train with yolov3 using pretrained weights) </i>
+
+<i> darknet.exe  detector train data/SATA/obj.data cfg/yolov3_sata.cfg weights/pretrained/yolov3-tiny.conv.11 (to train with tiny yolov3 using pretrained weights) </i>
+
+To test your model with a single image use this command after replacing "SATA" folder, "obj.data" file, "image.png" file and sata.weights(use your weights trained with the training command!) <i>
+
+<i> darknet_no_gpu.exe detector test data/SATA/obj.data cfg/yolov3_sata.cfg weights/sata.weights -filename data/SATA/image.png </i>
+
+To test your model with a batch of test image use this command after replacing "SATA" folder, "obj.data" file, "image.png" file and sata.weights(use your weights trained with the training command!)
+
+<i> darknet_no_gpu.exe detector batch data/SATA/obj.data cfg/yolov3-tiny_sata.cfg weights/yolov3-tiny_sata.weights -in_folder data/SATA/in_images/ -out_folder data/SATA/out_images/ -out results/result.txt </i>
 
 # Added features
 
