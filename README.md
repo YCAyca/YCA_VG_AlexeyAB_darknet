@@ -71,9 +71,7 @@ If you dont want to use multi threshold feauture but to determine one threshold 
 
 # Command descriptions of other features from base repos
 
-Use "detection test" for single image detection
-Use "detection batch" for multiple image detection. For that you should use "-in_folder imagepath" too.
-Use "-save_labels" for saving labels as yolo annotation files
+Use "-save_labels" for saving labels as yolo annotation files <br>
 
 
 
