@@ -12,9 +12,9 @@ General placements and system environment definitions are shown below:
 
 To build darknet.sln look at Figure1 and to build darknet_no_gpu look at Figure2
 
-<img src="readme_imgs/darknet.png" alt="" width="100%" /> Figure 1<br> <br> <br>
+<img src="readme_imgs/darknet.png" alt="" width="100%" /> <b><i> Figure 1 </b></i> <br> <br> <br>
 
-<img src="readme_imgs/darknet_no_gpu.png" alt="" width="100%" />  Figure 2<br> <br> <br>
+<img src="readme_imgs/darknet_no_gpu.png" alt="" width="100%" />  <b><i> Figure 2 </b></i>  <br> <br> <br>
 
 I use VS2019 and opencv_3.2 for this code. You can download opencv version from  https://opencv.org/opencv-3-2/ <br>
 
@@ -37,6 +37,8 @@ To test your model with a batch of test image use this command after replacing "
 
 <i> darknet_no_gpu.exe detector batch data/SATA/obj.data cfg/yolov3-tiny_sata.cfg weights/yolov3-tiny_sata.weights -in_folder data/SATA/in_images/ -out_folder data/SATA/out_images/ -out results/result.txt </i>
 
+<img src="readme_imgs/sata_folder.png" alt="" width="40%" />  <b><i> Inside view of a sample sata folder. </b></i>  <br> <br> <br>
+
 # Added features
 
 ## 1)Multiple Threshold
@@ -44,6 +46,8 @@ To test your model with a batch of test image use this command after replacing "
 With this feature, you can make predictions with multiple prediction thresholds at the same time. The performance is x times faster when you use x different threshold. (e.g The prediction duration with 3 threshold with multi threshold feautres is 1.33468e+06 msec and the sum of 3 different threshold one by one is 1.06509e+06 msec x 3. using 500 coco input images)
 
 When you use multi threshold feauture, you obtain different result.txt files and output image folders for each threshold value. You need to give the base folder and file name during running the code via terminal. Not all the folder and file names separately. (e.g When you type out_folder data/COCO/out_images/ the app creates different output image folders via the given threshold values like data/COCO/out_images.25/ data/COCO/out_images.90/ when the given threshold values are 0.25 and 0.90. Likewise when you type -out results/result.txt the app creates different output files via the given threshold values like results/result.25 results/result.90 when the given threshold values are 0.25 and 0.90)
+
+<img src="readme_imgs/coco_results.png" alt="" width="40%" /> <b><i> outputs created in data/COCO folder </b></i> <br> <br> <br>
 
 <img src="build/darknet/x64/data/COCO/out_images.25/000000000001.png" alt="" width="40%" /> <img src="build/darknet/x64/data/COCO/out_images.90/000000000001.png" alt="" width="40%" />
 
