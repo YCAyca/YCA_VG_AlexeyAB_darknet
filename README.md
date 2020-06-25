@@ -64,7 +64,22 @@ In summary, we can say that more detailed objects are detected with the 0.25 thr
 
 ## Usage
 
-darknet_no_gpu.exe detector batch data/COCO/obj.data cfg/yolov3_coco.cfg weights/yolov3_coco.weights -in_folder data/COCO/in_images/ -out_folder data/COCO/out_images/ -out results/result.txt -multi_thresh 3 0.90 0.50 0.25  
+darknet_no_gpu.exe detector batch data/COCO/obj.data cfg/yolov3_coco.cfg weights/yolov3_coco.weights -in_folder data/COCO/in_images/ -out_folder data/COCO/out_images/ -out results/result.txt -multi_thresh 3 0.90 0.50 0.25 
+
+## 2) Log Files
+
+I updated the code so it creates a train_log file who includes some information about training process like iteration number, avg loss, etc. You can see the train_log at the same location with .exe file without doing anything. <br>
+
+<img src="readme_imgs/train_log.png" alt="" width="75%" />  <br>
+
+I updated the code so it creates a valid_log file who includes some information about performance of the model like class aP's, mAP, detection time etc. You can use the command below and compare different weights saved at different stages during training.  <br>
+
+<i> darknet.exe detector map data/SATA/obj.data cfg/yolov3_satav2.cfg backup/yolov3_satav2_8000.weights  </i> <br>
+<i> darknet.exe detector map data/SATA/obj.data cfg/yolov3_satav2.cfg backup/yolov3_satav2_10000.weights </i> <br>
+<i> darknet.exe detector map data/SATA/obj.data cfg/yolov3_satav2.cfg backup/yolov3_satav2_15000.weights </i> <br> <br>
+
+<img src="readme_imgs/valid_log.png" alt="" width="50%" />
+
 
 ## Important Notes
 
