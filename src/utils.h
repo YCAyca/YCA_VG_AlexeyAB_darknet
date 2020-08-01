@@ -98,6 +98,7 @@ void reverse(char* str, int len);
 int intToStr(int x, char str[], int d);
 void ftoa(float n, char* res, int afterpoint);
 float* find_multi_float_arg(int argc, char** argv, char* arg);
+void find_rep(char* string, char find_character, char rep_character);
 
 
 #define max_val_cmp(a,b) (((a) > (b)) ? (a) : (b))
