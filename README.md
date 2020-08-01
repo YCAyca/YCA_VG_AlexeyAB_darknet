@@ -85,7 +85,7 @@ I updated the code so it creates a valid_log file who includes some information 
 I updated the code as to write the probability with the label next to the bounding box. 
 Left image shows the older and right image shows the newer version of the output image. 
 
-<img src="readme_imgs/detection_old_version.jpg" alt="" width="50%" />   <img src="readme_imgs/detection_new_version.jpg" alt="" width="50%" /> 
+<img src="readme_imgs/detection_old_version.jpg" alt="" width="40%" />   <img src="readme_imgs/detection_new_version.jpg" alt="" width="40%" /> 
 ## Important Notes
 
 When typing multi threshold values, make sure to give the values in decreasing order. <br>
