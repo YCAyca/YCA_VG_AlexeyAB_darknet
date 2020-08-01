@@ -379,6 +379,7 @@ void draw_detections_v3(char* filename, image im, detection* dets, int num, floa
                         fprintf(output_file, "%s: %.0f%%\n", names[j], selected_detections[i].det.prob[j] * 100);
                     }
                 }
+                
             }
             fprintf(output_file, "\n");
             fclose(output_file);
@@ -463,6 +464,13 @@ void draw_detections_v3(char* filename, image im, detection* dets, int num, floa
                     strcat(labelstr, names[j]);
                 }
             }
+            char temp[50];
+            memset(temp, '\0', sizeof(temp));
+            ftoa(selected_detections[i].det.prob[selected_detections[i].best_class], temp, 2);
+            strcat(labelstr, "  ");
+            find_rep(temp, '.', '%');
+            strcat(labelstr, temp);
+            printf("%f, %s %s\n", selected_detections[i].det.prob[selected_detections[i].best_class], temp, labelstr);
             image label = get_label_v3(alphabet, labelstr, (im.h * .03));
             draw_label(im, top + width, left, label, rgb);
             free_image(label);
