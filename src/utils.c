@@ -1121,3 +1121,14 @@ float* find_multi_float_arg(int argc, char** argv, char* arg)
     }
     return NULL;
 }
+
+void find_rep(char* string, char find_character, char rep_character)
+{
+    uint8_t i = 0;
+    while (*string)
+    {
+        if(*string == find_character)
+            string[i] = rep_character;
+        ++string;
+    }
+}
