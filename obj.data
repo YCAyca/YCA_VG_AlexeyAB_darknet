@@ -1,5 +1,0 @@
-classes= 1
-#train=data/baroode/train.txt
-names = data/barcode/obj.names
-backup = backup/
-
