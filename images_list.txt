@@ -1,0 +1,12 @@
+data/barcode/raw_images/Front (23539521)_20210203_173328111_0013.png
+data/barcode/raw_images/Front (23539521)_20210203_173328111_0014.png
+data/barcode/raw_images/Front (23539521)_20210203_173328111_0015.png
+data/barcode/raw_images/Front (23539521)_20210203_173328111_0016.png
+data/barcode/raw_images/Front (23539521)_20210203_173328111_0017.png
+data/barcode/raw_images/Front (23539521)_20210203_173328111_0018.png
+data/barcode/raw_images/Front (23539521)_20210203_173328111_0019.png
+data/barcode/raw_images/Front (23539521)_20210203_173328111_0020.png
+data/barcode/raw_images/Front (23539521)_20210203_173328111_0021.png
+data/barcode/raw_images/Front (23539521)_20210203_173328111_0032.png
+data/barcode/raw_images/Rear (23646144)_20210203_175443535_0909.png
+data/barcode/raw_images/Rear (23646144)_20210203_175443535_0913.png
