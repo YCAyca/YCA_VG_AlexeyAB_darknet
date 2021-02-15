@@ -108,7 +108,9 @@ Cutted and saved detections of that predicted image :
 <img src="readme_imgs/514644_768.jpg" alt="" width="20%" />  
 <img src="readme_imgs/014644_768.jpg" alt="" width="20%" />  
 
-!!! Even if you have more than one detection box for the same class, they are saved with different names so any bounding box is overwrited.
+<b> !!! </b>  Even if you have more than one detection box for the same class, they are saved with different names so any bounding box is overwrited.
+
+<b> !!! </b> If you want to have different folders for prediction and cut (E.g you can have a test images folder which have same images for cutting edges, but resized ones to have predictions faster and cutted images better as resized-small images). You can use -raw folder path feature to declare that you give raw -unresized images to cut the detections, but the prediction will be done with in_folder anyway
 
 ## Important Notes
 
