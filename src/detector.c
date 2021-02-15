@@ -18,6 +18,10 @@
 #include "demo.h"
 #include "option_list.h"
 #include <conio.h>
+#include "image_opencv.h"
+#include <sys/stat.h>
+#include <sys/types.h>
+
 
 int multi_flag = 0;
 int multi_count = 0;
@@ -1599,7 +1603,7 @@ char* remove_ext(char* mystr) {
 
 
 void batch_detector(char* datacfg, char* cfgfile, char* weightfile, char* filename, float* multi_thresh, float thresh,
-    float hier_thresh, int dont_show, char* outfile, int save_labels, char* in_folder, char* out_folder, int out_term)
+    float hier_thresh, int dont_show, char* outfile, int save_labels, char* in_folder, char* out_folder, char * cut_folder, char * raw_folder, int out_term)
 {
     list* options = read_data_cfg(datacfg); // obj.data'yı veriyoruz biz
     char* name_list = option_find_str(options, "names", "data/names.list");
@@ -1623,14 +1627,7 @@ void batch_detector(char* datacfg, char* cfgfile, char* weightfile, char* filena
     double time;
     char buff[256];
     char* input = buff;
-    //     char *json_buf = NULL;
-    //     int json_image_id = 0;
-    //     FILE* json_file = NULL;
-    //     if (outfile) {
-    //         json_file = fopen(outfile, "wb");
-    //         char *tmp = "[\n";
-    //         fwrite(tmp, sizeof(char), strlen(tmp), json_file);
-    //     }
+   
     int j;
     float nms = .45;    // 0.4F
 
@@ -1674,6 +1671,7 @@ void batch_detector(char* datacfg, char* cfgfile, char* weightfile, char* filena
                 //network_predict_image(&net, im); letterbox = 1;
                 printf("%s: Predicted in %lf milli-seconds.\n", input, ((double)get_time_point() - time) / 1000);
                 //printf("%s: Predicted in %f seconds.\n", input, (what_time_is_it_now()-time));
+
                 if (multi_thresh != NULL)
                 {
                     multi_flag = 1;
@@ -1683,7 +1681,7 @@ void batch_detector(char* datacfg, char* cfgfile, char* weightfile, char* filena
                         int nboxes = 0;
                         detection* dets = get_network_boxes(&net, im.w, im.h, multi_thresh[i], hier_thresh, 0, 1, &nboxes, letterbox);
                         if (nms) do_nms_sort(dets, nboxes, l.classes, nms);
-                        //    printf("%f", multi_thresh[i]);
+                  
                         draw_detections_v3(filename, im, dets, nboxes, multi_thresh[i], names, alphabet, l.classes, outfile, out_term);
 
                         if (out_folder) { // data/SATA/out_images/ 
@@ -1695,7 +1693,7 @@ void batch_detector(char* datacfg, char* cfgfile, char* weightfile, char* filena
                             memset(temp2, '\0', sizeof(temp2));
                             const* out = strncpy(temp2, out_folder, copylength); //data/SATA/out_images
                             char* temp3 = concat(temp2, temp); //data/SATA/out_images0.25
-                            char* outfoldername = concat(temp3, "/"); //data/SATA/out_images0.25
+                            char* outfoldername = concat(temp3, "/"); //data/SATA/out_images0.25/
                             mkdir(outfoldername);
                             char* outputfilename = concat(outfoldername, filebasename);
                             char* outputfilename_without_ext = remove_ext(outputfilename);
@@ -1727,6 +1725,7 @@ void batch_detector(char* datacfg, char* cfgfile, char* weightfile, char* filena
                             }
                             fclose(fw);
                         }
+
                         free_detections(dets, nboxes);
                     }
                     printf("End\n");
@@ -1775,13 +1774,165 @@ void batch_detector(char* datacfg, char* cfgfile, char* weightfile, char* filena
                         fclose(fw);
                     }
 
+                    if (cut_folder)
+                    {
+                        if (raw_folder)
+                        {
+                            
+                            for (int i = 0; i < nboxes; ++i) {
+                                char buff[1024];
+                                int class_id = -1;
+                                float prob = 0;
+                                for (j = 0; j < l.classes; ++j) {
+                                    if (dets[i].prob[j] > thresh && dets[i].prob[j] > prob) {
+                                        prob = dets[i].prob[j];
+                                        class_id = j;
+                                    }
+                                }
+                                if (class_id >= 0) {
+                                    char tmp[1000] = { 0 };
+                                    sprintf(tmp, "%d", i);
+                                    char *count = tmp;
+
+                              //      printf("RAW :  %s  \n", raw_folder); // data/barcode/raw_images/
+                              //      printf("FILENAME : %s \n", filename); // data/barcode/raw_images/Rear (23646144)_20210203_175443535_0913.png
+
+                                    char character = '/';
+                                    char * img_name = strrchr(filename, character);
+                                    img_name++;
+                              //      printf("IMG_NAME %s \n", img_name); // Rear(23646144)_20210203_175443535_0913.png
+                                    char * outputfilename = concat(count, img_name);
+
+
+                                    char * tmp2 = concat(cut_folder, names[class_id]);
+                              //      printf("tmp2 %s \n", tmp2); // data/barcode/cutted/barcode
+                                    char * cut_folder_classes = concat(tmp2, "/");
+                                //    printf("cut_folder_classes %s \n", cut_folder_classes); // data/barcode/cutted/barcode/
+                                    char * out_path = concat(cut_folder_classes, outputfilename);
+                                //    printf("cut_folder_image_path %s \n", out_path); //  data/barcode/cutted/barcode/2Rear (23646144)_20210203_175443535_0913.png
+                                    char * im_path = concat(raw_folder, img_name);
+                                //    printf("output folder %s \n", out_path); // data/barcode/cutted/barcode/2Rear (23646144)_20210203_175443535_0913.png
+                                 //   printf("im_path folder %s \n", im_path); //  data/barcode/raw_images/Rear (23646144)_20210203_175443535_0913.png
+
+                                    int * im_size = image_size(im_path);
+
+                                    int raw_im_w = im_size[0]; //2448; //
+                                    int raw_im_h = im_size[1];//2048; //
+
+                                    int left = (dets[i].bbox.x - dets[i].bbox.w / 2.) * raw_im_w;
+                                    int right = (dets[i].bbox.x + dets[i].bbox.w / 2.) * raw_im_w;
+                                    int top = (dets[i].bbox.y - dets[i].bbox.h / 2.) * raw_im_h;
+                                    int bot = (dets[i].bbox.y + dets[i].bbox.h / 2.) * raw_im_h;
+
+                                    if (left < 0) left = 0;
+                                    if (right > raw_im_w - 1) right = raw_im_w - 1;
+                                    if (top < 0) top = 0;
+                                    if (bot > raw_im_h - 1) bot = raw_im_h - 1;
+
+                                    int width = right - left;
+                                    int height = bot - top;
+
+                             //       printf("%d %d %d %d", left, top, width, height);
+
+                                    
+#ifdef OPENCV
+                                    cut_save_detections(im_path, out_path, left, top, width, height);
+                              
+                                    if (save_labels)
+                                    {
+                                        char* labelfile_without_ext = remove_ext(img_name);
+                                        char* labelfile_name = concat(labelfile_without_ext, ".txt");
+                                        char* raw_with_ext = concat(raw_folder, "/");
+                                        char* labelfile = concat(raw_with_ext, labelfile_name);
+                                //        printf("SAVE LABELS FILE %s", labelfile);
+                                        FILE* fw = fopen(labelfile, "a+");
+                                        if (class_id >= 0) {
+                                            sprintf(buff, "%d %2.4f %2.4f %2.4f %2.4f\n", class_id, dets[i].bbox.x, dets[i].bbox.y, dets[i].bbox.w, dets[i].bbox.h);
+                                            fwrite(buff, sizeof(char), strlen(buff), fw);
+                                        }
+                                    }
+#endif      
+                                }
+                               
+                            }
+                        }
+                        else
+                        {
+                            for (int i = 0; i < nboxes; ++i) {
+                                char buff[1024];
+                                int class_id = -1;
+                                float prob = 0;
+                                for (j = 0; j < l.classes; ++j) {
+                                    if (dets[i].prob[j] > thresh && dets[i].prob[j] > prob) {
+                                        prob = dets[i].prob[j];
+                                        class_id = j;
+                                    }
+                                }
+                                if (class_id >= 0) {
+                                    int left = (dets[i].bbox.x - dets[i].bbox.w / 2.) * im.w;
+                                    int right = (dets[i].bbox.x + dets[i].bbox.w / 2.) * im.w;
+                                    int top = (dets[i].bbox.y - dets[i].bbox.h / 2.) * im.h;
+                                    int bot = (dets[i].bbox.y + dets[i].bbox.h / 2.) * im.h;
+
+                                    if (left < 0) left = 0;
+                                    if (right > im.w - 1) right = im.w - 1;
+                                    if (top < 0) top = 0;
+                                    if (bot > im.h - 1) bot = im.h - 1;
+
+                                    int width = right - left;
+                                    int height = bot - top;
+
+                              //      printf("%d %d %d %d", left, top, width, height);
+
+                                    char tmp[1000] = { 0 };
+                                    sprintf(tmp, "%d", i);
+                                    char *count = tmp;
+
+      
+                             //       printf("FILENAME %s \n:", filename);
+
+                                    char character = '/';
+                                    char * img_name = strrchr(filename, character);
+                                    img_name++;
+                            //        printf("IMG_NAME %s \n", img_name);
+                                    char * outputfilename = concat(count, img_name);
+
+                                    char * tmp2 = concat(cut_folder, names[class_id]);
+                             //       printf("tmp2 %s \n", tmp2);
+                                    char * cut_folder_classes = concat(tmp2, "/");
+                             //       printf("cut_folder_classes %s \n", cut_folder_classes);
+                                    char * out_path = concat(cut_folder_classes, outputfilename);
+                             //       printf("cut_folder_image_path %s \n", out_path);
+
+                             //       printf("output folder %s \n", out_path);
+                             //       printf("im_path folder %s \n", filename);
+
+
+#ifdef OPENCV
+                                    cut_save_detections(filename, out_path, left, top, width, height);
+                                    if (save_labels)
+                                    {
+                                        char* labelfile_without_ext = remove_ext(img_name);
+                                        char* labelfile_name = concat(labelfile_without_ext, ".txt");
+                                        char* labelfile = concat(in_folder, labelfile_name);
+                                        FILE* fw = fopen(labelfile, "a+");
+                                        if (class_id >= 0) {
+                                            sprintf(buff, "%d %2.4f %2.4f %2.4f %2.4f\n", class_id, dets[i].bbox.x, dets[i].bbox.y, dets[i].bbox.w, dets[i].bbox.h);
+                                            fwrite(buff, sizeof(char), strlen(buff), fw);
+                                        }
+                                    }
+#endif
+                                }
+                            }
+
+                        }
+                    } 
+
                     printf("End\n");
 
                     free_detections(dets, nboxes);
                     free_image(im);
                     free_image(sized);
-                    //free(boxes);
-                    //free_ptrs((void **)probs, l.w*l.h*l.n);
                 }
 
 #ifdef OPENCV
@@ -2187,6 +2338,8 @@ void run_detector(int argc, char **argv)
     char* out_folder = find_char_arg(argc, argv, "-out_folder", 0); // data/SATA/out_images/
     int* batch_img = find_arg(argc, argv, "-batch_img");
     int out_term = find_arg(argc, argv, "-out_term", 0);
+    char * cut_folder = find_char_arg(argc, argv, "-cut_folder", 0);
+    char * raw_folder = find_char_arg(argc, argv, "-raw_folder", 0);
     char* chart_path = find_char_arg(argc, argv, "-chart", 0);
     if (argc < 4) {
         fprintf(stderr, "usage: %s %s [train/test/valid/demo/map] [data] [cfg] [weights (optional)]\n", argv[0], argv[1]);
@@ -2225,7 +2378,7 @@ void run_detector(int argc, char **argv)
         if (strlen(weights) > 0)
             if (weights[strlen(weights) - 1] == 0x0d) weights[strlen(weights) - 1] = 0;
 
-    if (0 == strcmp(argv[2], "batch"))  batch_detector(datacfg, cfg, weights, filename, multi_thresh, thresh, hier_thresh, dont_show, outfile, save_labels, in_folder, out_folder, out_term);
+    if (0 == strcmp(argv[2], "batch"))  batch_detector(datacfg, cfg, weights, filename, multi_thresh, thresh, hier_thresh, dont_show, outfile, save_labels, in_folder, out_folder, cut_folder, raw_folder, out_term);
     else
     //------ vincent end --------
     if (0 == strcmp(argv[2], "test")) test_detector(datacfg, cfg, weights, filename, thresh, hier_thresh, dont_show, ext_output, save_labels, outfile, letter_box, benchmark_layers, out_term);

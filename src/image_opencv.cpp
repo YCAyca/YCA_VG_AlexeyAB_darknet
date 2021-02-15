@@ -133,6 +133,28 @@ extern "C" mat_cv *load_image_mat_cv(const char *filename, int flag)
 }
 // ----------------------------------------
 
+void cut_save_detections(char *im_path, char *save_path, int x, int y, int w, int h)
+{
+    cv::Mat img = cv::imread(im_path, cv::IMREAD_COLOR);
+   // cv::imshow("input image", img);
+     
+    cv::Rect roi(x, y, w, h);
+    cv::Mat crop = img(roi);
+    cv::imwrite(save_path, crop);
+  
+}
+
+int * image_size(char * im_path)
+{
+    cv::Mat img = cv::imread(im_path, cv::IMREAD_COLOR);
+  
+    int size[2];
+    size[0] = img.cols; // w
+    size[1] = img.rows; // h
+
+    return size;
+}
+
 cv::Mat load_image_mat(char *filename, int channels)
 {
     int flag = cv::IMREAD_UNCHANGED;

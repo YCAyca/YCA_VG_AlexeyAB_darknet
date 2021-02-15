@@ -19,6 +19,9 @@ typedef void* write_cv;
 //typedef struct cap_cv cap_cv;
 //typedef struct write_cv write_cv;
 
+void cut_save_detections(char *im_path, char *save_path, int x, int y, int w, int h);
+int * image_size(char * im_path);
+
 // cv::Mat
 mat_cv *load_image_mat_cv(const char *filename, int flag);
 image load_image_cv(char *filename, int channels);
