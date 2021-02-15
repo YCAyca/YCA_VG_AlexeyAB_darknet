@@ -86,6 +86,30 @@ I updated the code as to write the probability with the label next to the boundi
 Left image shows the older and right image shows the newer version of the output image. 
 
 <img src="readme_imgs/detection_old_version.jpg" alt="" width="40%" />   <img src="readme_imgs/detection_new_version.jpg" alt="" width="40%" /> 
+
+## 4) Saving Prediction Boxes via Grouping by class names
+
+I updated the code as to save detections as new images to the output folders named by class names. So you can have new datasets after using your test images   
+You need to specify the output folder for cutted images by using -cut_folder path 
+
+A prediction and cut-detections example for my trained model with 5 different classes. 
+darknet_no_gpu.exe detector batch data/overview/obj.data data/overview/Model1/overview_v6.cfg data/overview/Model1/overview_v6.weights -in_folder data/overview/test_images/ -out_folder data/overview/output/ -cut_folder data/overview/cutted/ 
+
+<img src="readme_imgs/cd1.png" alt="" width="40%" /> <br>
+Automatically created output folders according to my class names <br>
+<img src="readme_imgs/14644_768.png" alt="" width="40%" />  <br>
+Detection results of an image (saved on data/overview/output)  
+
+Cutted and saved detections of that predicted image :
+
+<img src="readme_imgs/914644_768.jpg" alt="" width="20%" />  
+<img src="readme_imgs/814644_768.jpg" alt="" width="20%" />  
+<img src="readme_imgs/714644_768.jpg" alt="" width="20%" />  <br> 
+<img src="readme_imgs/514644_768.jpg" alt="" width="20%" />  
+<img src="readme_imgs/014644_768.jpg" alt="" width="20%" />  
+
+!!! Even if you have more than one detection box for the same class, they are saved with different names so any bounding box is overwrited.
+
 ## Important Notes
 
 When typing multi threshold values, make sure to give the values in decreasing order. <br>
