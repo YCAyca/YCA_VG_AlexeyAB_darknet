@@ -114,9 +114,10 @@ Cutted and saved detections of that predicted image :
 
 ## Important Notes
 
-When typing multi threshold values, make sure to give the values in decreasing order. <br>
-You can use the command without -out or -out_folder if you dont want to obtain these outputs. <br>
-If you dont want to use multi threshold feauture but to determine one threshold value use -thresh xx command. <br>
+When typing multi threshold values, make sure to give the values in decreasing order. <br>  <br> 
+You can use the command without -out or -out_folder if you dont want to obtain these outputs. <br>  <br> 
+If you dont want to use multi threshold feauture but to determine one threshold value use -thresh xx command. <br> <br> 
+To be able to benefit these features, dont remove OPENCV definition on Properties->Preprocessor window !
 
 # Command descriptions of other features from base repos
 
