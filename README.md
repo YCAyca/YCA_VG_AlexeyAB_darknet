@@ -4,9 +4,9 @@
 
 Its better to have same versions explained below:
 
-Opencv 3.2
-Cudnn 7.6.5
-Cuda 10.2
+Opencv 3.2 <br>
+Cudnn 7.6.5 <br>
+Cuda 10.2 <br>
 
 This a repo forked from VG_AlexeyAB_darknet(https://github.com/vincentgong7/VG_AlexeyAB_darknet) which is forked from AlexeyAB_darknet(https://github.com/AlexeyAB/darknet) with more features on YOLO batch/test detector. You can download and build the solution after arranging below paths in Visual Studio or do the equivalent steps if you will use another system.
 
